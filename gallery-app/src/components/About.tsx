@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-20 bg-gradient-to-b from-black via-purple-950/10 to-black"
+      className="relative py-20 bg-gradient-to-b from-black via-purple-950/30 to-purple-900/20"
     >
       {/* Background Image */}
       <div className="absolute inset-0 opacity-5">

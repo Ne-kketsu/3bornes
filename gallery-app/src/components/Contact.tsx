@@ -30,7 +30,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 bg-black">
+    <section
+      id="contact"
+      className="relative py-20 bg-gradient-to-b from-purple-950/40 via-blue-950/30 to-black"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('/images/Meeting3.png')] bg-cover bg-center" />

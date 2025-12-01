@@ -16,7 +16,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="relative py-16 bg-gradient-to-b from-black via-purple-950/20 to-black">
+    <section className="relative py-16 bg-gradient-to-b from-slate-950 via-indigo-950/50 to-purple-950/40">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('/images/ScenePainting.png')] bg-cover bg-center" />

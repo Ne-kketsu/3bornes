@@ -35,7 +35,10 @@ export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section id="gallery" className="py-20 bg-black">
+    <section
+      id="gallery"
+      className="relative py-20 bg-gradient-to-b from-purple-900/40 via-slate-900 to-slate-950"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">

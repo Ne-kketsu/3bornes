@@ -51,7 +51,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-20 bg-gradient-to-b from-black via-purple-950/20 to-black"
+      className="relative py-20 bg-gradient-to-b from-slate-950 via-blue-950/40 to-indigo-950/30"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
