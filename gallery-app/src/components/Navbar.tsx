@@ -28,7 +28,7 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled ? "glass-dark shadow-lg py-3" : "bg-transparent py-5"
+        isScrolled ? "glass-dark shadow-lg py-3" : "bg-transparent py-3 md:py-5"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 glass-dark rounded-xl p-6 space-y-4 animate-slide-up">
+          <div className="md:hidden mt-4 bg-black/90 backdrop-blur-xl rounded-xl p-6 space-y-4 animate-slide-up border border-white/20">
             {navLinks.map((link) => (
               <a
                 key={link.href}

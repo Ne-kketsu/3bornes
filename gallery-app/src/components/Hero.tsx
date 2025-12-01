@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0"
     >
       {/* Background with gradient overlay and carousel */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900">
