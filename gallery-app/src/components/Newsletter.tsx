@@ -22,14 +22,14 @@ export default function Newsletter() {
         <div className="absolute inset-0 bg-[url('/images/ScenePainting.png')] bg-cover bg-center" />
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-dark rounded-2xl p-8 md:p-12 text-center animate-fade-in">
+        <div className="glass-dark rounded-3xl p-8 md:p-12 text-center animate-fade-in border border-white/10">
           <div className="flex justify-center mb-6">
-            <div className="p-4 bg-white/10 rounded-full">
+            <div className="p-4 bg-white/10 rounded-full backdrop-blur-md">
               <Mail className="w-8 h-8 text-white" />
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 backdrop-blur-sm bg-white/5 px-6 py-3 rounded-xl inline-block">
             Restez Informé
           </h2>
 
