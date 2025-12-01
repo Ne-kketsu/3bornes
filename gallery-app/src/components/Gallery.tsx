@@ -6,20 +6,28 @@ import { X } from "lucide-react";
 
 const images = [
   {
-    url: "https://galeriedestroisbornes.com/img/l3.jpg",
-    alt: "Galerie des Trois Bornes - Espace principal",
+    url: "/images/expo1.jpg",
+    alt: "Galerie des Trois Bornes - Exposition 1",
   },
   {
-    url: "https://galeriedestroisbornes.com/img/l31.jpg",
-    alt: "Galerie des Trois Bornes - Vue intérieure",
+    url: "/images/expo2.jpg",
+    alt: "Galerie des Trois Bornes - Exposition 2",
   },
   {
-    url: "https://galeriedestroisbornes.com/img/l4.jpg",
-    alt: "Galerie des Trois Bornes - Espace événementiel",
+    url: "/images/expo3.jpg",
+    alt: "Galerie des Trois Bornes - Exposition 3",
   },
   {
-    url: "https://galeriedestroisbornes.com/img/l6.jpg",
-    alt: "Galerie des Trois Bornes - Aménagement",
+    url: "/images/tournage1.jpg",
+    alt: "Galerie des Trois Bornes - Tournage professionnel",
+  },
+  {
+    url: "/images/Scene.png",
+    alt: "Galerie des Trois Bornes - Scène événementielle",
+  },
+  {
+    url: "/images/Meeting2.png",
+    alt: "Galerie des Trois Bornes - Espace meeting",
   },
 ];
 
@@ -39,7 +47,7 @@ export default function Gallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((image, index) => (
             <Card
               key={index}
@@ -47,7 +55,7 @@ export default function Gallery() {
               style={{ animationDelay: `${index * 100}ms` }}
               onClick={() => setSelectedImage(image.url)}
             >
-              <CardContent className="p-0 aspect-video">
+              <CardContent className="p-0 aspect-[4/3]">
                 <div className="relative w-full h-full overflow-hidden rounded-lg">
                   <img
                     src={image.url}

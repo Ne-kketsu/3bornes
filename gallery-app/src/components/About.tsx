@@ -7,9 +7,13 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-gradient-to-b from-black via-purple-950/10 to-black"
+      className="relative py-20 bg-gradient-to-b from-black via-purple-950/10 to-black"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[url('/images/expo4.jpg')] bg-cover bg-center" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -93,7 +97,7 @@ export default function About() {
             <div className="space-y-4">
               <div className="relative aspect-square rounded-xl overflow-hidden group">
                 <img
-                  src="https://galeriedestroisbornes.com/img/l3.jpg"
+                  src="/images/OberkPhoto.png"
                   alt="Galerie espace"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -101,7 +105,7 @@ export default function About() {
               </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                 <img
-                  src="https://galeriedestroisbornes.com/img/l4.jpg"
+                  src="/images/expo5.jpg"
                   alt="Espace événementiel"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -111,7 +115,7 @@ export default function About() {
             <div className="space-y-4 mt-8">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                 <img
-                  src="https://galeriedestroisbornes.com/img/l31.jpg"
+                  src="/images/tournage2.jpg"
                   alt="Vue intérieure"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -119,7 +123,7 @@ export default function About() {
               </div>
               <div className="relative aspect-square rounded-xl overflow-hidden group">
                 <img
-                  src="https://galeriedestroisbornes.com/img/l6.jpg"
+                  src="/images/seat-red.jpg"
                   alt="Aménagement"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

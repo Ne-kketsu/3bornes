@@ -30,8 +30,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-20 bg-black">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[url('/images/Meeting3.png')] bg-cover bg-center" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">

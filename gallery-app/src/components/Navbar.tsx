@@ -38,7 +38,7 @@ export default function Navbar() {
             href="#home"
             className="text-3xl md:text-4xl font-bold text-white transition-all duration-300 hover:scale-105 tracking-tight"
           >
-            <span className="bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent">
               GalleryDes3Bornes
             </span>
           </a>

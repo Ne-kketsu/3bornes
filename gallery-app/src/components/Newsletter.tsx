@@ -16,8 +16,12 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-black via-purple-950/20 to-black">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-16 bg-gradient-to-b from-black via-purple-950/20 to-black">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[url('/images/ScenePainting.png')] bg-cover bg-center" />
+      </div>
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-dark rounded-2xl p-8 md:p-12 text-center animate-fade-in">
           <div className="flex justify-center mb-6">
             <div className="p-4 bg-white/10 rounded-full">
