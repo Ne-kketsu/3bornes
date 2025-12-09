@@ -9,6 +9,7 @@ import {
   CardContent,
 } from "./ui/card";
 import { Users, Calendar, Layers, Sparkles } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 const services = [
   {
@@ -53,6 +54,15 @@ export default function Services() {
       id="services"
       className="relative py-20 bg-gradient-to-b from-slate-950 via-blue-950/40 to-indigo-950/30"
     >
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${withBasePath("/images/expo5.jpg")}')`,
+          }}
+        />
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16 animate-fade-in">
