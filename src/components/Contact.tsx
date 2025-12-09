@@ -21,7 +21,8 @@ type BookingStep = "date" | "time" | "type" | "info" | "success";
 
 interface BookingData {
   date: Date | null;
-  time: string;
+  startTime: string;
+  endTime: string;
   type: string;
   firstName: string;
   lastName: string;
@@ -33,7 +34,8 @@ export default function Contact() {
   const [step, setStep] = useState<BookingStep>("date");
   const [bookingData, setBookingData] = useState<BookingData>({
     date: null,
-    time: "",
+    startTime: "",
+    endTime: "",
     type: "",
     firstName: "",
     lastName: "",
@@ -68,11 +70,6 @@ export default function Contact() {
     setStep("time");
   };
 
-  const handleTimeSelect = (time: string) => {
-    setBookingData({ ...bookingData, time });
-    setStep("type");
-  };
-
   const handleTypeSelect = (type: string) => {
     setBookingData({ ...bookingData, type });
     setStep("info");
@@ -90,21 +87,63 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bookingData),
-      });
+      const formattedDate = bookingData.date
+        ? new Intl.DateTimeFormat("fr-FR", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }).format(bookingData.date)
+        : "";
 
-      if (response.ok) {
+      // Create email body
+      const emailBody = `
+Nouvelle Réservation - Galerie des Trois Bornes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DÉTAILS DE LA RÉSERVATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Date: ${formattedDate}
+Heure de début: ${bookingData.startTime}
+Heure de fin: ${bookingData.endTime}
+Type de réservation: ${bookingData.type}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INFORMATIONS DU CLIENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Nom: ${bookingData.firstName} ${bookingData.lastName}
+Email: ${bookingData.email}
+Téléphone: ${bookingData.phone}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ce message a été envoyé depuis le formulaire de réservation du site web.
+
+Galerie des Trois Bornes
+9 Cité des Trois Bornes, 75011 Paris
+Tél: +33 (0)6 18 34 24 79
+      `;
+
+      // Send email using mailto (simple client-side solution)
+      const subject = encodeURIComponent(
+        `Nouvelle réservation - ${formattedDate} de ${bookingData.startTime} à ${bookingData.endTime}`
+      );
+      const body = encodeURIComponent(emailBody);
+      const mailtoLink = `mailto:exagorastudio@gmail.com?subject=${subject}&body=${body}`;
+
+      // Open mailto link
+      window.location.href = mailtoLink;
+
+      // Show success after a short delay
+      setTimeout(() => {
         setStep("success");
-      } else {
-        alert("Erreur lors de l'envoi de la réservation. Veuillez réessayer.");
-      }
+        setIsSubmitting(false);
+      }, 500);
     } catch (error) {
       console.error("Booking error:", error);
       alert("Erreur lors de l'envoi de la réservation. Veuillez réessayer.");
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -112,7 +151,8 @@ export default function Contact() {
   const handleReset = () => {
     setBookingData({
       date: null,
-      time: "",
+      startTime: "",
+      endTime: "",
       type: "",
       firstName: "",
       lastName: "",
@@ -290,47 +330,106 @@ export default function Contact() {
                 )}
 
                 {step === "time" && (
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <div className="flex items-center gap-2 text-white/70 mb-2">
                       <Clock className="w-5 h-5" />
                       <p className="text-sm">
                         Date: {bookingData.date && formatDate(bookingData.date)}
                       </p>
                     </div>
-                    <label className="block text-white/70 mb-2 text-sm">
-                      Heure de début (8h00 - 00h00)
-                    </label>
-                    <div className="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto">
-                      {timeSlots.map((time) => (
-                        <button
-                          key={time}
-                          type="button"
-                          onClick={() => handleTimeSelect(time)}
-                          className={`px-4 py-2 rounded-lg border transition-all ${
-                            bookingData.time === time
-                              ? "bg-white text-black border-white"
-                              : "bg-white/5 text-white border-white/10 hover:bg-white/10"
-                          }`}
-                        >
-                          {time}
-                        </button>
-                      ))}
+
+                    <div>
+                      <label className="block text-white/70 mb-3 text-sm font-medium">
+                        Heure de début (8h00 - 23h00)
+                      </label>
+                      <div className="grid grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 bg-black/20 rounded-lg">
+                        {timeSlots.slice(0, -1).map((time) => (
+                          <button
+                            key={time}
+                            type="button"
+                            onClick={() =>
+                              setBookingData({
+                                ...bookingData,
+                                startTime: time,
+                              })
+                            }
+                            className={`px-4 py-2 rounded-lg border transition-all ${
+                              bookingData.startTime === time
+                                ? "bg-white text-black border-white"
+                                : "bg-white/5 text-white border-white/10 hover:bg-white/10"
+                            }`}
+                          >
+                            {time}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => setStep("date")}
-                      className="text-white/70 hover:text-white text-sm mt-4"
-                    >
-                      ← Retour
-                    </button>
+
+                    {bookingData.startTime && (
+                      <div>
+                        <label className="block text-white/70 mb-3 text-sm font-medium">
+                          Heure de fin ({bookingData.startTime} - 00h00)
+                        </label>
+                        <div className="grid grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 bg-black/20 rounded-lg">
+                          {timeSlots
+                            .filter((time) => {
+                              const startHour = parseInt(
+                                bookingData.startTime.split(":")[0]
+                              );
+                              const currentHour = parseInt(time.split(":")[0]);
+                              return currentHour > startHour;
+                            })
+                            .map((time) => (
+                              <button
+                                key={time}
+                                type="button"
+                                onClick={() =>
+                                  setBookingData({
+                                    ...bookingData,
+                                    endTime: time,
+                                  })
+                                }
+                                className={`px-4 py-2 rounded-lg border transition-all ${
+                                  bookingData.endTime === time
+                                    ? "bg-white text-black border-white"
+                                    : "bg-white/5 text-white border-white/10 hover:bg-white/10"
+                                }`}
+                              >
+                                {time}
+                              </button>
+                            ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex gap-3 pt-4">
+                      <button
+                        type="button"
+                        onClick={() => setStep("date")}
+                        className="text-white/70 hover:text-white text-sm"
+                      >
+                        ← Retour
+                      </button>
+                      {bookingData.startTime && bookingData.endTime && (
+                        <Button
+                          type="button"
+                          onClick={() => setStep("type")}
+                          variant="glass"
+                          className="flex-1"
+                        >
+                          Continuer
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 )}
 
                 {step === "type" && (
                   <div className="space-y-4">
                     <p className="text-white/70 text-sm mb-4">
-                      Date: {bookingData.date && formatDate(bookingData.date)} à{" "}
-                      {bookingData.time}
+                      Date: {bookingData.date && formatDate(bookingData.date)}
+                      <br />
+                      Horaire: {bookingData.startTime} - {bookingData.endTime}
                     </p>
                     <label className="block text-white/70 mb-2 text-sm">
                       Type de réservation
@@ -364,8 +463,10 @@ export default function Contact() {
                 {step === "info" && (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <p className="text-white/70 text-sm mb-4">
-                      {bookingData.date && formatDate(bookingData.date)} à{" "}
-                      {bookingData.time} - {bookingData.type}
+                      {bookingData.date && formatDate(bookingData.date)}
+                      <br />
+                      {bookingData.startTime} - {bookingData.endTime} •{" "}
+                      {bookingData.type}
                     </p>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
@@ -465,8 +566,10 @@ export default function Contact() {
                         {bookingData.date && formatDate(bookingData.date)}
                       </p>
                       <p className="text-white/70 text-sm">
-                        <span className="font-semibold text-white">Heure:</span>{" "}
-                        {bookingData.time}
+                        <span className="font-semibold text-white">
+                          Horaire:
+                        </span>{" "}
+                        {bookingData.startTime} - {bookingData.endTime}
                       </p>
                       <p className="text-white/70 text-sm">
                         <span className="font-semibold text-white">Type:</span>{" "}
