@@ -5,6 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Select } from "./ui/select";
 import { Calendar } from "./ui/calendar";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
@@ -96,54 +97,35 @@ export default function Contact() {
           }).format(bookingData.date)
         : "";
 
-      // Create email body
-      const emailBody = `
-Nouvelle Réservation - Galerie des Trois Bornes
+      // EmailJS configuration
+      const serviceId = "service_galerie3b"; // Replace with your EmailJS service ID
+      const templateId = "template_booking"; // Replace with your EmailJS template ID
+      const publicKey = "JXbh3oWMM73D5tOQz"; // Replace with your EmailJS public key
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-DÉTAILS DE LA RÉSERVATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      // Template parameters
+      const templateParams = {
+        to_email: "randiomdiude@gmail.com",
+        from_name: `${bookingData.firstName} ${bookingData.lastName}`,
+        booking_date: formattedDate,
+        start_time: bookingData.startTime,
+        end_time: bookingData.endTime,
+        booking_type: bookingData.type,
+        client_firstName: bookingData.firstName,
+        client_lastName: bookingData.lastName,
+        client_email: bookingData.email,
+        client_phone: bookingData.phone,
+        subject: `Nouvelle réservation - ${formattedDate} de ${bookingData.startTime} à ${bookingData.endTime}`,
+      };
 
-Date: ${formattedDate}
-Heure de début: ${bookingData.startTime}
-Heure de fin: ${bookingData.endTime}
-Type de réservation: ${bookingData.type}
+      // Send email via EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-INFORMATIONS DU CLIENT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Nom: ${bookingData.firstName} ${bookingData.lastName}
-Email: ${bookingData.email}
-Téléphone: ${bookingData.phone}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Ce message a été envoyé depuis le formulaire de réservation du site web.
-
-Galerie des Trois Bornes
-9 Cité des Trois Bornes, 75011 Paris
-Tél: +33 (0)6 18 34 24 79
-      `;
-
-      // Send email using mailto (simple client-side solution)
-      const subject = encodeURIComponent(
-        `Nouvelle réservation - ${formattedDate} de ${bookingData.startTime} à ${bookingData.endTime}`
-      );
-      const body = encodeURIComponent(emailBody);
-      const mailtoLink = `mailto:exagorastudio@gmail.com?subject=${subject}&body=${body}`;
-
-      // Open mailto link
-      window.location.href = mailtoLink;
-
-      // Show success after a short delay
-      setTimeout(() => {
-        setStep("success");
-        setIsSubmitting(false);
-      }, 500);
+      // Show success
+      setStep("success");
     } catch (error) {
       console.error("Booking error:", error);
       alert("Erreur lors de l'envoi de la réservation. Veuillez réessayer.");
+    } finally {
       setIsSubmitting(false);
     }
   };
