@@ -104,7 +104,7 @@ export default function Contact() {
 
       // Template parameters
       const templateParams = {
-        to_email: "randiomdiude@gmail.com",
+        to_email: "gregoconcept@gmail.com",
         from_name: `${bookingData.firstName} ${bookingData.lastName}`,
         booking_date: formattedDate,
         start_time: bookingData.startTime,
