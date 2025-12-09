@@ -3,31 +3,132 @@
 import React, { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
-import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
+import { Select } from "./ui/select";
+import { Calendar } from "./ui/calendar";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Check,
+  Calendar as CalendarIcon,
+  Clock,
+} from "lucide-react";
 import { withBasePath } from "@/lib/basePath";
 
+type BookingStep = "date" | "time" | "type" | "info" | "success";
+
+interface BookingData {
+  date: Date | null;
+  time: string;
+  type: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
+  const [step, setStep] = useState<BookingStep>("date");
+  const [bookingData, setBookingData] = useState<BookingData>({
+    date: null,
+    time: "",
+    type: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    message: "",
+    phone: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const bookingTypes = [
+    "Coworking",
+    "Afterwork & Événements Privés",
+    "Expositions & Projections",
+    "Shooting & Casting",
+    "Autres",
+  ];
+
+  const timeSlots = Array.from({ length: 17 }, (_, i) => {
+    const hour = i + 8;
+    return `${hour.toString().padStart(2, "0")}:00`;
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission (you can integrate with an API or email service)
-    console.log("Form submitted:", formData);
-    alert("Merci pour votre message ! Nous vous répondrons rapidement.");
-    setFormData({ name: "", email: "", message: "" });
+  const isDateDisabled = (date: Date) => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    date.setHours(0, 0, 0, 0);
+    return date < tomorrow;
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
+  const handleDateSelect = (date: Date) => {
+    setBookingData({ ...bookingData, date });
+    setStep("time");
+  };
+
+  const handleTimeSelect = (time: string) => {
+    setBookingData({ ...bookingData, time });
+    setStep("type");
+  };
+
+  const handleTypeSelect = (type: string) => {
+    setBookingData({ ...bookingData, type });
+    setStep("info");
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBookingData({
+      ...bookingData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (response.ok) {
+        setStep("success");
+      } else {
+        alert("Erreur lors de l'envoi de la réservation. Veuillez réessayer.");
+      }
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert("Erreur lors de l'envoi de la réservation. Veuillez réessayer.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleReset = () => {
+    setBookingData({
+      date: null,
+      time: "",
+      type: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+    });
+    setStep("date");
+  };
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat("fr-FR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
   };
 
   return (
@@ -142,82 +243,252 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Booking Widget */}
           <div className="animate-slide-up" style={{ animationDelay: "200ms" }}>
             <Card className="glass-dark border-white/10">
               <CardHeader>
-                <CardTitle className="text-white text-2xl">
-                  Envoyez-nous un message
+                <CardTitle className="text-white text-2xl flex items-center gap-2">
+                  {step === "success" ? (
+                    <>
+                      <Check className="w-6 h-6 text-green-400" />
+                      Réservation confirmée
+                    </>
+                  ) : (
+                    <>Réservez l&apos;espace</>
+                  )}
                 </CardTitle>
+                {step !== "success" && (
+                  <div className="flex gap-2 mt-4">
+                    {["date", "time", "type", "info"].map((s, i) => (
+                      <div
+                        key={s}
+                        className={`h-1 flex-1 rounded-full transition-all ${
+                          ["date", "time", "type", "info"].indexOf(step) >= i
+                            ? "bg-white"
+                            : "bg-white/20"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-white/70 mb-2 text-sm"
-                    >
-                      Nom
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
-                      placeholder="Votre nom"
+                {step === "date" && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-white/70 mb-2">
+                      <CalendarIcon className="w-5 h-5" />
+                      <p className="text-sm">
+                        Sélectionnez une date (à partir de demain)
+                      </p>
+                    </div>
+                    <Calendar
+                      selected={bookingData.date || undefined}
+                      onSelect={handleDateSelect}
+                      disabled={isDateDisabled}
                     />
                   </div>
+                )}
 
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-white/70 mb-2 text-sm"
-                    >
-                      Email
+                {step === "time" && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-white/70 mb-2">
+                      <Clock className="w-5 h-5" />
+                      <p className="text-sm">
+                        Date: {bookingData.date && formatDate(bookingData.date)}
+                      </p>
+                    </div>
+                    <label className="block text-white/70 mb-2 text-sm">
+                      Heure de début (8h00 - 00h00)
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
-                      placeholder="votre@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-white/70 mb-2 text-sm"
+                    <div className="grid grid-cols-3 gap-2 max-h-64 overflow-y-auto">
+                      {timeSlots.map((time) => (
+                        <button
+                          key={time}
+                          type="button"
+                          onClick={() => handleTimeSelect(time)}
+                          className={`px-4 py-2 rounded-lg border transition-all ${
+                            bookingData.time === time
+                              ? "bg-white text-black border-white"
+                              : "bg-white/5 text-white border-white/10 hover:bg-white/10"
+                          }`}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setStep("date")}
+                      className="text-white/70 hover:text-white text-sm mt-4"
                     >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all resize-none"
-                      placeholder="Décrivez votre projet..."
-                    />
+                      ← Retour
+                    </button>
                   </div>
+                )}
 
-                  <Button
-                    type="submit"
-                    variant="glass"
-                    size="lg"
-                    className="w-full"
-                  >
-                    Envoyer
-                  </Button>
-                </form>
+                {step === "type" && (
+                  <div className="space-y-4">
+                    <p className="text-white/70 text-sm mb-4">
+                      Date: {bookingData.date && formatDate(bookingData.date)} à{" "}
+                      {bookingData.time}
+                    </p>
+                    <label className="block text-white/70 mb-2 text-sm">
+                      Type de réservation
+                    </label>
+                    <div className="space-y-2">
+                      {bookingTypes.map((type) => (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => handleTypeSelect(type)}
+                          className={`w-full px-4 py-3 rounded-lg border transition-all text-left ${
+                            bookingData.type === type
+                              ? "bg-white text-black border-white"
+                              : "bg-white/5 text-white border-white/10 hover:bg-white/10"
+                          }`}
+                        >
+                          {type}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setStep("time")}
+                      className="text-white/70 hover:text-white text-sm mt-4"
+                    >
+                      ← Retour
+                    </button>
+                  </div>
+                )}
+
+                {step === "info" && (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <p className="text-white/70 text-sm mb-4">
+                      {bookingData.date && formatDate(bookingData.date)} à{" "}
+                      {bookingData.time} - {bookingData.type}
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-white/70 mb-2 text-sm">
+                          Prénom *
+                        </label>
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={bookingData.firstName}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                          placeholder="Prénom"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-white/70 mb-2 text-sm">
+                          Nom *
+                        </label>
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={bookingData.lastName}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                          placeholder="Nom"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-white/70 mb-2 text-sm">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={bookingData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                        placeholder="votre@email.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-white/70 mb-2 text-sm">
+                        Téléphone *
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={bookingData.phone}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                        placeholder="+33 6 12 34 56 78"
+                      />
+                    </div>
+                    <div className="flex gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setStep("type")}
+                        className="text-white/70 hover:text-white text-sm"
+                      >
+                        ← Retour
+                      </button>
+                      <Button
+                        type="submit"
+                        variant="glass"
+                        size="lg"
+                        className="flex-1"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Envoi..." : "Confirmer la réservation"}
+                      </Button>
+                    </div>
+                  </form>
+                )}
+
+                {step === "success" && (
+                  <div className="space-y-6 text-center py-8">
+                    <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto">
+                      <Check className="w-8 h-8 text-green-400" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-semibold text-white">
+                        Réservation confirmée !
+                      </h3>
+                      <p className="text-white/70">
+                        Nous avons bien reçu votre demande de réservation.
+                      </p>
+                    </div>
+                    <div className="glass-dark p-4 rounded-xl text-left space-y-2">
+                      <p className="text-white/70 text-sm">
+                        <span className="font-semibold text-white">Date:</span>{" "}
+                        {bookingData.date && formatDate(bookingData.date)}
+                      </p>
+                      <p className="text-white/70 text-sm">
+                        <span className="font-semibold text-white">Heure:</span>{" "}
+                        {bookingData.time}
+                      </p>
+                      <p className="text-white/70 text-sm">
+                        <span className="font-semibold text-white">Type:</span>{" "}
+                        {bookingData.type}
+                      </p>
+                      <p className="text-white/70 text-sm">
+                        <span className="font-semibold text-white">
+                          Contact:
+                        </span>{" "}
+                        {bookingData.firstName} {bookingData.lastName}
+                      </p>
+                    </div>
+                    <Button
+                      variant="glass"
+                      size="lg"
+                      onClick={handleReset}
+                      className="w-full"
+                    >
+                      Nouvelle réservation
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
