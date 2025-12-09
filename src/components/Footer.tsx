@@ -101,7 +101,7 @@ export default function Footer() {
             © {currentYear} Galerie des Trois Bornes. Tous droits réservés.
           </p>
           <div className="text-white/40 text-xs">
-            Réalisé par Yebo Logo • Supervisé par Rodrigue Grego
+            Réalisé par Balthazard Grego • Supervisé par Rodrigue Grego
           </div>
         </div>
       </div>

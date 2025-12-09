@@ -3,30 +3,31 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import { X } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 const images = [
   {
-    url: "/images/expo1.jpg",
+    url: withBasePath("/images/expo1.jpg"),
     alt: "Galerie des Trois Bornes - Exposition 1",
   },
   {
-    url: "/images/expo2.jpg",
+    url: withBasePath("/images/expo2.jpg"),
     alt: "Galerie des Trois Bornes - Exposition 2",
   },
   {
-    url: "/images/expo3.jpg",
+    url: withBasePath("/images/expo3.jpg"),
     alt: "Galerie des Trois Bornes - Exposition 3",
   },
   {
-    url: "/images/tournage1.jpg",
+    url: withBasePath("/images/tournage1.jpg"),
     alt: "Galerie des Trois Bornes - Tournage professionnel",
   },
   {
-    url: "/images/Scene.png",
+    url: withBasePath("/images/Scene.png"),
     alt: "Galerie des Trois Bornes - Scène événementielle",
   },
   {
-    url: "/images/Meeting2.png",
+    url: withBasePath("/images/Meeting2.png"),
     alt: "Galerie des Trois Bornes - Espace meeting",
   },
 ];

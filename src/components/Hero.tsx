@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
+import { withBasePath } from "@/lib/basePath";
 
 const backgroundImages = [
-  "/images/expo6.jpg",
-  "/images/expo1.jpg",
-  "/images/Scene.png",
-  "/images/tournage1.jpg",
-  "/images/expo2.jpg",
+  withBasePath("/images/expo6.jpg"),
+  withBasePath("/images/expo1.jpg"),
+  withBasePath("/images/Scene.png"),
+  withBasePath("/images/tournage1.jpg"),
+  withBasePath("/images/expo2.jpg"),
 ];
 
 export default function Hero() {

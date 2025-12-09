@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -36,7 +37,12 @@ export default function Contact() {
     >
       {/* Background Image */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[url('/images/Meeting3.png')] bg-cover bg-center" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${withBasePath("/images/Meeting3.png")}')`,
+          }}
+        />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}

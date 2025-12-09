@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Card, CardContent } from "./ui/card";
+import { withBasePath } from "@/lib/basePath";
 
 export default function About() {
   return (
@@ -11,7 +12,12 @@ export default function About() {
     >
       {/* Background Image */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[url('/images/expo4.jpg')] bg-cover bg-center" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${withBasePath("/images/expo4.jpg")}')`,
+          }}
+        />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
@@ -97,7 +103,7 @@ export default function About() {
             <div className="space-y-4">
               <div className="relative aspect-square rounded-xl overflow-hidden group">
                 <img
-                  src="/images/OberkPhoto.png"
+                  src={withBasePath("/images/OberkPhoto.png")}
                   alt="Galerie espace"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -105,7 +111,7 @@ export default function About() {
               </div>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                 <img
-                  src="/images/expo5.jpg"
+                  src={withBasePath("/images/expo5.jpg")}
                   alt="Espace événementiel"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -115,7 +121,7 @@ export default function About() {
             <div className="space-y-4 mt-8">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                 <img
-                  src="/images/tournage2.jpg"
+                  src={withBasePath("/images/tournage2.jpg")}
                   alt="Vue intérieure"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -123,7 +129,7 @@ export default function About() {
               </div>
               <div className="relative aspect-square rounded-xl overflow-hidden group">
                 <img
-                  src="/images/seat-red.jpg"
+                  src={withBasePath("/images/seat-red.jpg")}
                   alt="Aménagement"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

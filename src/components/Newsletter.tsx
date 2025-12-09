@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Mail } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -19,7 +20,14 @@ export default function Newsletter() {
     <section className="relative py-16 bg-gradient-to-b from-slate-950 via-indigo-950/50 to-purple-950/40">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[url('/images/ScenePainting.png')] bg-cover bg-center" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${withBasePath(
+              "/images/ScenePainting.png"
+            )}')`,
+          }}
+        />
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-dark rounded-3xl p-8 md:p-12 text-center animate-fade-in border border-white/10">
