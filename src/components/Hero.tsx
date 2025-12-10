@@ -71,7 +71,7 @@ export default function Hero() {
               className="text-lg px-8 py-6"
               onClick={() =>
                 document
-                  .getElementById("contact")
+                  .getElementById("booking")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
