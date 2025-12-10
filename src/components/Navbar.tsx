@@ -55,7 +55,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="#booking"
               className="glass text-white px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-300 text-sm font-medium border border-white/30"
             >
               Réserver
@@ -86,7 +86,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="#booking"
               className="block glass text-white px-6 py-3 rounded-full hover:bg-white/20 transition-all duration-300 text-center font-medium border border-white/30"
               onClick={() => setIsMobileMenuOpen(false)}
             >

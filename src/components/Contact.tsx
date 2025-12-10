@@ -245,7 +245,11 @@ export default function Contact() {
             </Card>
 
             {/* Social Media */}
-            <div className="flex space-x-4">
+            <div
+              id="booking" /*Added booking ID here, to properly display the entirety of the booking component when navigating on mobile*/
+              className="flex space-x-4 animate-slide-up"
+              style={{ animationDelay: "200ms" }}
+            >
               <a
                 href="https://www.facebook.com/ChristoBali96/"
                 target="_blank"
@@ -264,7 +268,6 @@ export default function Contact() {
               </a>
             </div>
           </div>
-
           {/* Booking Widget */}
           <div className="animate-slide-up" style={{ animationDelay: "200ms" }}>
             <Card className="glass-dark border-white/10">

@@ -126,7 +126,7 @@ export default function Services() {
               Belleville & Ménilmontant
             </p>
             <a
-              href="#contact"
+              href="#booking"
               className="inline-block glass text-white px-8 py-3 rounded-full hover:bg-white/20 transition-all duration-300 font-medium border border-white/30"
             >
               Demander un devis
