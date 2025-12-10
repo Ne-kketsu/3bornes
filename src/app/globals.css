@@ -109,3 +109,66 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Scroll-triggered animations with Intersection Observer */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hide elements initially until scroll reveal triggers */
+[data-scroll-reveal] {
+  opacity: 0;
+}
+
+.scroll-reveal {
+  opacity: 1;
+  transition: opacity 0.8s ease-out;
+}
+
+/* Animation classes - start hidden and animate in when scroll-reveal is triggered */
+.scroll-reveal .animate-zoom-in,
+.scroll-reveal .animate-fade-in-up,
+.scroll-reveal .animate-slide-in-left,
+.scroll-reveal .animate-slide-in-right,
+.scroll-reveal .animate-fade-in,
+.scroll-reveal .animate-scale-in {
+  animation-play-state: running;
+}
+
+.animate-zoom-in,
+.animate-fade-in-up,
+.animate-slide-in-left,
+.animate-slide-in-right,
+.animate-fade-in,
+.animate-scale-in {
+  opacity: 0;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
+}
+
+/* Staggered animation delays for child elements */
+.stagger-children > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-children > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-children > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-children > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stagger-children > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.stagger-children > *:nth-child(6) {
+  animation-delay: 0.6s;
+}

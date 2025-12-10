@@ -10,6 +10,7 @@ import {
 } from "./ui/card";
 import { Users, Calendar, Layers, Sparkles } from "lucide-react";
 import { withBasePath } from "@/lib/basePath";
+import { ScrollReveal } from "./ScrollReveal";
 
 const services = [
   {
@@ -65,74 +66,84 @@ export default function Services() {
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 backdrop-blur-xl bg-white/5 px-8 py-4 rounded-2xl inline-block">
-            Nos Services
-          </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto backdrop-blur-md bg-black/20 px-6 py-3 rounded-xl border border-white/10">
-            Un espace polyvalent adapté à tous vos projets
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 backdrop-blur-xl bg-white/5 px-8 py-4 rounded-2xl inline-block animate-zoom-in">
+              Nos Services
+            </h2>
+            <p
+              className="text-xl text-white/70 max-w-2xl mx-auto backdrop-blur-md bg-black/20 px-6 py-3 rounded-xl border border-white/10 animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              Un espace polyvalent adapté à tous vos projets
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className="glass-dark border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-105 animate-slide-up group"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardHeader>
-                <div className="mb-4 p-3 bg-white/10 rounded-lg w-fit group-hover:bg-white/20 transition-colors duration-300">
-                  <service.icon className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-white text-xl">
-                  {service.title}
-                </CardTitle>
-                <CardDescription className="text-white/70">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-white/60 text-sm">{service.details}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <ScrollReveal delay="0.2s">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-children">
+            {services.map((service, index) => (
+              <Card
+                key={index}
+                className="glass-dark border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-105 animate-slide-up group"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardHeader>
+                  <div className="mb-4 p-3 bg-white/10 rounded-lg w-fit group-hover:bg-white/20 transition-colors duration-300">
+                    <service.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-white text-xl">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-white/70">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-white/60 text-sm">{service.details}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </ScrollReveal>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="glass-dark p-6 rounded-xl text-center hover:bg-white/10 transition-all duration-300 animate-scale-in"
-              style={{ animationDelay: `${index * 100 + 400}ms` }}
-            >
-              <p className="text-white/60 text-sm mb-2">{feature.label}</p>
-              <p className="text-white text-xl font-bold">{feature.value}</p>
-            </div>
-          ))}
-        </div>
+        {/* Features */}
+        <ScrollReveal delay="0.4s">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 stagger-children">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="glass-dark p-6 rounded-xl text-center hover:bg-white/10 transition-all duration-300 animate-zoom-in"
+              >
+                <p className="text-white/60 text-sm mb-2">{feature.label}</p>
+                <p className="text-white text-xl font-bold">{feature.value}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {/* Call to Action */}
-        <div className="mt-16 text-center animate-fade-in">
-          <div className="glass-dark p-8 rounded-2xl max-w-3xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Prix Attractif
-            </h3>
-            <p className="text-white/70 mb-6">
-              Animé de bars, restaurants et théâtres • Équipements
-              professionnels • Système son de qualité • Proche du Marais,
-              Belleville & Ménilmontant
-            </p>
-            <a
-              href="#booking"
-              className="inline-block glass text-white px-8 py-3 rounded-full hover:bg-white/20 transition-all duration-300 font-medium border border-white/30"
-            >
-              Demander un devis
-            </a>
+        <ScrollReveal delay="0.6s">
+          <div className="mt-16 text-center animate-fade-in-up">
+            <div className="glass-dark p-8 rounded-2xl max-w-3xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Prix Attractif
+              </h3>
+              <p className="text-white/70 mb-6">
+                Animé de bars, restaurants et théâtres • Équipements
+                professionnels • Système son de qualité • Proche du Marais,
+                Belleville & Ménilmontant
+              </p>
+              <a
+                href="#booking"
+                className="inline-block glass text-white px-8 py-3 rounded-full hover:bg-white/20 transition-all duration-300 font-medium border border-white/30"
+              >
+                Demander un devis
+              </a>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

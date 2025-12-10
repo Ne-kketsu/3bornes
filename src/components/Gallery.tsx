@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import { X } from "lucide-react";
 import { withBasePath } from "@/lib/basePath";
+import { ScrollReveal } from "./ScrollReveal";
 
 const images = [
   {
@@ -52,48 +53,55 @@ export default function Gallery() {
         />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 backdrop-blur-xl bg-white/5 px-8 py-4 rounded-2xl inline-block">
-            Notre Galerie
-          </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto backdrop-blur-md bg-black/20 px-6 py-3 rounded-xl border border-white/10">
-            Découvrez notre ancienne imprimerie transformée en espace
-            événementiel unique
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {images.map((image, index) => (
-            <Card
-              key={index}
-              className="group relative overflow-hidden bg-transparent border-0 cursor-pointer transform transition-all duration-500 hover:scale-105 animate-scale-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => setSelectedImage(image.url)}
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 backdrop-blur-xl bg-white/5 px-8 py-4 rounded-2xl inline-block animate-zoom-in">
+              Notre Galerie
+            </h2>
+            <p
+              className="text-xl text-white/70 max-w-2xl mx-auto backdrop-blur-md bg-black/20 px-6 py-3 rounded-xl border border-white/10 animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
             >
-              <CardContent className="p-0 aspect-[4/3]">
-                <div className="relative w-full h-full overflow-hidden rounded-lg">
-                  <img
-                    src={image.url}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <p className="text-lg font-semibold">{image.alt}</p>
+              Découvrez notre ancienne imprimerie transformée en espace
+              événementiel unique
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay="0.2s">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+            {images.map((image, index) => (
+              <Card
+                key={index}
+                className="group relative overflow-hidden bg-transparent border-0 cursor-pointer transform transition-all duration-500 hover:scale-105 animate-fade-in-up"
+                onClick={() => setSelectedImage(image.url)}
+              >
+                <CardContent className="p-0 aspect-[4/3]">
+                  <div className="relative w-full h-full overflow-hidden rounded-lg">
+                    <img
+                      src={image.url}
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <p className="text-lg font-semibold">{image.alt}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
 
       {/* Modal for enlarged image */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
           onClick={() => setSelectedImage(null)}
+          style={{ animation: "fadeIn 0.3s ease-out forwards" }}
         >
           <button
             className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
@@ -105,7 +113,8 @@ export default function Gallery() {
           <img
             src={selectedImage}
             alt="Enlarged view"
-            className="max-w-full max-h-full object-contain rounded-lg animate-scale-in"
+            className="max-w-full max-h-full object-contain rounded-lg"
+            style={{ animation: "scaleIn 0.3s ease-out forwards" }}
             onClick={(e) => e.stopPropagation()}
           />
         </div>

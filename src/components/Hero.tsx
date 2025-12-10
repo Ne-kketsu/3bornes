@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { withBasePath } from "@/lib/basePath";
+import { ScrollReveal } from "./ScrollReveal";
 
 const backgroundImages = [
   withBasePath("/images/expo6.jpg"),
@@ -51,46 +52,48 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight backdrop-blur-sm bg-white/5 px-8 py-6 rounded-3xl inline-block">
-            Un lieu unique au
-            <br />
-            <span className="text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
-              cœur de Paris
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto backdrop-blur-md bg-black/20 px-8 py-4 rounded-xl border border-white/10">
-            A proximité du Marais, nichée entre Belleville, République &
-            Ménilmontant, dans un quartier culturel et artistique. Cette
-            ancienne imprimerie de 85 m² transformée en galerie.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              variant="glass"
-              size="lg"
-              className="text-lg px-8 py-6"
-              onClick={() =>
-                document
-                  .getElementById("booking")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Réserver l&apos;espace
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-6 bg-black border-white/30 text-white hover:bg-black/80"
-              onClick={() =>
-                document
-                  .getElementById("gallery")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Découvrir
-            </Button>
+        <ScrollReveal>
+          <div className="animate-fade-in">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight backdrop-blur-sm bg-white/5 px-8 py-6 rounded-3xl inline-block">
+              Un lieu unique au
+              <br />
+              <span className="text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+                cœur de Paris
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto backdrop-blur-md bg-black/20 px-8 py-4 rounded-xl border border-white/10">
+              A proximité du Marais, nichée entre Belleville, République &
+              Ménilmontant, dans un quartier culturel et artistique. Cette
+              ancienne imprimerie de 85 m² transformée en galerie.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                variant="glass"
+                size="lg"
+                className="text-lg px-8 py-6"
+                onClick={() =>
+                  document
+                    .getElementById("booking")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Réserver l&apos;espace
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-6 bg-black border-white/30 text-white hover:bg-black/80"
+                onClick={() =>
+                  document
+                    .getElementById("gallery")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Découvrir
+              </Button>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
