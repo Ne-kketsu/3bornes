@@ -15,38 +15,38 @@ import { ScrollReveal } from "./ScrollReveal";
 const services = [
   {
     icon: Users,
-    title: "Coworking",
-    description: "Espace de travail qualitatif et multi-usages",
+    title: "Coworking / Séminaire / Réunion",
+    description: "Espace de travail professionnel et polyvalent",
     details:
-      "Agréable pour échanger et réseauter. Facile d'accès dans un quartier culturel et artistique",
+      "Wi-Fi, vidéo projecteur, écran déroulant, paperboard, tables et chaises à disposition",
   },
   {
     icon: Calendar,
-    title: "Afterwork & Événements Privés",
-    description: "Rassemblez-vous autour d'un buffet ou cocktail",
+    title: "Événementiel & Soirées Privées",
+    description: "Réceptions, cocktails, baptêmes, anniversaires",
     details:
-      "Atmosphère conviviale avec fond musical. Système son de qualité à disposition",
+      "Bar américain, frigo professionnel, sonorisation de qualité. Atmosphère conviviale",
   },
   {
     icon: Layers,
     title: "Expositions & Projections",
-    description: "Événements pluridisciplinaires",
+    description: "Expos, projections de films, Fashion Week",
     details:
-      "Week-end, semaine ou soirée. Appropriez-vous cet espace selon votre projet",
+      "120 m² de loft industriel avec deux salles. Appropriez-vous cet espace selon votre projet",
   },
   {
     icon: Sparkles,
-    title: "Shooting & Casting",
-    description: "Productions photos et vidéos",
-    details: "Ancienne imprimerie de 85 m² avec caractère et lumière naturelle",
+    title: "Shooting, Casting & Tournage",
+    description: "Studio photo, préparation tournage, régie film",
+    details: "Ancienne imprimerie avec caractère unique et lumière naturelle",
   },
 ];
 
 const features = [
-  { label: "Surface", value: "85 M²" },
-  { label: "Capacité Debout", value: "100 PERS." },
-  { label: "Capacité Assis", value: "50 PERS." },
-  { label: "Type", value: "LIEU ATYPIQUE" },
+  { label: "Surface Totale", value: "110 M²" },
+  { label: "Salle Principale", value: "85 M²" },
+  { label: "Seconde Salle", value: "25 M²" },
+  { label: "Type", value: "LOFT INDUSTRIEL" },
 ];
 
 export default function Services() {
@@ -60,7 +60,7 @@ export default function Services() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('${withBasePath("/images/expo5.jpg")}')`,
+            backgroundImage: `url('${withBasePath("/images/VideGS5.jpg")}')`,
           }}
         />
       </div>
@@ -131,9 +131,9 @@ export default function Services() {
                 Prix Attractif
               </h3>
               <p className="text-white/70 mb-6">
-                Animé de bars, restaurants et théâtres • Équipements
-                professionnels • Système son de qualité • Proche du Marais,
-                Belleville & Ménilmontant
+                Quartier vivant et branché • Wi-Fi & Sonorisation • Vidéo
+                projecteur • Bar américain • Vestiaires & Toilettes • Parking
+                dans l&apos;impasse
               </p>
               <a
                 href="#booking"

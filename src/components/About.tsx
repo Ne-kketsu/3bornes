@@ -16,7 +16,7 @@ export default function About() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('${withBasePath("/images/expo4.jpg")}')`,
+            backgroundImage: `url('${withBasePath("/images/VideGS4.jpg")}')`,
           }}
         />
       </div>
@@ -47,42 +47,29 @@ export default function About() {
                   </h3>
                   <div className="space-y-4 text-white/80 leading-relaxed">
                     <p>
-                      A proximité du{" "}
-                      <span className="text-white font-semibold">Marais</span>,
-                      La Galerie des Trois Bornes est nichée entre{" "}
+                      La Galerie des 3 Bornes vous met à disposition son espace
+                      dans une{" "}
                       <span className="text-white font-semibold">
-                        Belleville
-                      </span>
-                      ,
-                      <span className="text-white font-semibold">
-                        {" "}
-                        République
+                        ancienne imprimerie de 120 m²
                       </span>{" "}
-                      &
-                      <span className="text-white font-semibold">
-                        {" "}
-                        Ménilmontant
-                      </span>
-                      , dans un quartier culturel et artistique, animé de bars,
-                      restaurants et théâtres.
+                      transformée en loft industriel.
                     </p>
                     <p>
-                      Cette{" "}
+                      L&apos;espace se scinde en{" "}
                       <span className="text-white font-semibold">
-                        ancienne imprimerie de 85 m²
+                        deux salles
                       </span>
-                      , transformée en galerie, ouvre ses portes à des
-                      événements pluridisciplinaires.
+                      , une de 85m² et l&apos;autre 25m². La galerie en
+                      rez-de-chaussée est située dans une impasse au calme
+                      comprenant deux entrées séparées.
                     </p>
                     <p>
-                      Celui-ci accueille le temps d&apos;un week-end, d&apos;une
-                      semaine ou d&apos;une soirée, expositions, soirées de
-                      projections, shootings photos, casting.
+                      L&apos;impasse permet aux véhicules de se garer en toute
+                      tranquillité afin de pouvoir décharger du matériel.
                     </p>
                     <p className="text-white font-medium">
-                      Chacun peut s&apos;approprier cet espace comme il
-                      l&apos;entend et s&apos;y sentir à l&apos;aise selon son
-                      envie, son projet, son objectif.
+                      Les possibilités de vous approprier cet espace sont
+                      multiples.
                     </p>
                   </div>
                 </CardContent>
@@ -92,13 +79,14 @@ export default function About() {
               <Card className="glass-dark border-white/10">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold text-white mb-4">
-                    📍 Quartier Culturel
+                    📍 Quartier République
                   </h3>
                   <p className="text-white/80 leading-relaxed">
-                    Situé dans l&apos;un des quartiers les plus dynamiques de
-                    Paris, entre République et Belleville, la galerie bénéficie
-                    d&apos;un environnement riche en culture, avec de nombreux
-                    bars, restaurants et théâtres à proximité.
+                    À deux pas du Marais, la Galerie des 3 Bornes se situe dans
+                    le quartier République avec tous les transports à proximité.
+                    Quartier vivant et branché, vous y trouverez un large choix
+                    de restaurants, de bars et une vie culturelle avec ses
+                    nombreux théâtres.
                   </p>
                 </CardContent>
               </Card>
@@ -111,16 +99,16 @@ export default function About() {
               <div className="space-y-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden group">
                   <img
-                    src={withBasePath("/images/OberkPhoto.png")}
-                    alt="Galerie espace"
+                    src={withBasePath("/images/VideGS2.jpg")}
+                    alt="Grande Salle - Vue vide"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                   <img
-                    src={withBasePath("/images/expo5.jpg")}
-                    alt="Espace événementiel"
+                    src={withBasePath("/images/ReunionGS7.jpg")}
+                    alt="Grande Salle - Réunion"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -129,16 +117,16 @@ export default function About() {
               <div className="space-y-4 mt-8">
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden group">
                   <img
-                    src={withBasePath("/images/tournage2.jpg")}
-                    alt="Vue intérieure"
+                    src={withBasePath("/images/VidePS2.jpg")}
+                    alt="Petite Salle - Vue vide"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden group">
                   <img
-                    src={withBasePath("/images/seat-red.jpg")}
-                    alt="Aménagement"
+                    src={withBasePath("/images/ReunionPS4.jpg")}
+                    alt="Petite Salle - Réunion"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -6,11 +6,11 @@ import { withBasePath } from "@/lib/basePath";
 import { ScrollReveal } from "./ScrollReveal";
 
 const backgroundImages = [
-  withBasePath("/images/expo6.jpg"),
-  withBasePath("/images/expo1.jpg"),
+  withBasePath("/images/VideGS1.jpg"),
+  withBasePath("/images/VideGS2.jpg"),
+  withBasePath("/images/ReunionGS6.jpg"),
+  withBasePath("/images/VidePS1.jpg"),
   withBasePath("/images/Scene.png"),
-  withBasePath("/images/tournage1.jpg"),
-  withBasePath("/images/expo2.jpg"),
 ];
 
 export default function Hero() {
@@ -19,7 +19,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(
-        (prevIndex) => (prevIndex + 1) % backgroundImages.length
+        (prevIndex) => (prevIndex + 1) % backgroundImages.length,
       );
     }, 5000); // Change image every 5 seconds
 
@@ -62,9 +62,9 @@ export default function Hero() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto backdrop-blur-md bg-black/20 px-8 py-4 rounded-xl border border-white/10">
-              A proximité du Marais, nichée entre Belleville, République &
-              Ménilmontant, dans un quartier culturel et artistique. Cette
-              ancienne imprimerie de 85 m² transformée en galerie.
+              À deux pas du Marais, dans le quartier République avec tous les
+              transports à proximité. Une ancienne imprimerie de 120 m²
+              transformée en loft industriel.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button

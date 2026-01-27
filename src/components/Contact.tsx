@@ -105,7 +105,7 @@ export default function Contact() {
 
       // Template parameters
       const templateParams = {
-        to_email: "gregoconcept@gmail.com",
+        to_email: "galeriedes3bornes@gmail.com",
         from_name: `${bookingData.firstName} ${bookingData.lastName}`,
         booking_date: formattedDate,
         start_time: bookingData.startTime,
@@ -211,10 +211,16 @@ export default function Contact() {
                     <div>
                       <p className="text-white font-medium">Téléphone</p>
                       <a
-                        href="tel:+33618342479"
+                        href="tel:+33156980531"
+                        className="text-white/70 hover:text-white transition-colors block"
+                      >
+                        01 56 98 05 31
+                      </a>
+                      <a
+                        href="tel:+33635532831"
                         className="text-white/70 hover:text-white transition-colors"
                       >
-                        +33 (0)6 18 34 24 79
+                        06 35 53 28 31
                       </a>
                     </div>
                   </div>
@@ -224,10 +230,10 @@ export default function Contact() {
                     <div>
                       <p className="text-white font-medium">Email</p>
                       <a
-                        href="mailto:gregoconcept@gmail.com"
+                        href="mailto:galeriedes3bornes@gmail.com"
                         className="text-white/70 hover:text-white transition-colors"
                       >
-                        gregoconcept@gmail.com
+                        galeriedes3bornes@gmail.com
                       </a>
                     </div>
                   </div>
@@ -367,10 +373,10 @@ export default function Contact() {
                             {timeSlots
                               .filter((time) => {
                                 const startHour = parseInt(
-                                  bookingData.startTime.split(":")[0]
+                                  bookingData.startTime.split(":")[0],
                                 );
                                 const currentHour = parseInt(
-                                  time.split(":")[0]
+                                  time.split(":")[0],
                                 );
                                 return currentHour > startHour;
                               })

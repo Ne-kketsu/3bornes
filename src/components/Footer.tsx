@@ -79,18 +79,26 @@ export default function Footer() {
                 <li>75011 Paris, France</li>
                 <li>
                   <a
-                    href="tel:+33618342479"
+                    href="tel:+33156980531"
                     className="hover:text-white transition-colors"
                   >
-                    +33 (0)6 18 34 24 79
+                    01 56 98 05 31
                   </a>
                 </li>
                 <li>
                   <a
-                    href="mailto:gregoconcept@gmail.com"
+                    href="tel:+33635532831"
                     className="hover:text-white transition-colors"
                   >
-                    gregoconcept@gmail.com
+                    06 35 53 28 31
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:galeriedes3bornes@gmail.com"
+                    className="hover:text-white transition-colors"
+                  >
+                    galeriedes3bornes@gmail.com
                   </a>
                 </li>
               </ul>

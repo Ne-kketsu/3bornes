@@ -8,28 +8,32 @@ import { ScrollReveal } from "./ScrollReveal";
 
 const images = [
   {
-    url: withBasePath("/images/expo1.jpg"),
-    alt: "Galerie des Trois Bornes - Exposition 1",
+    url: withBasePath("/images/VideGS1.jpg"),
+    alt: "Grande Salle - Espace vide",
   },
   {
-    url: withBasePath("/images/expo2.jpg"),
-    alt: "Galerie des Trois Bornes - Exposition 2",
+    url: withBasePath("/images/VideGS3.jpg"),
+    alt: "Grande Salle - Vue d'ensemble",
   },
   {
-    url: withBasePath("/images/expo3.jpg"),
-    alt: "Galerie des Trois Bornes - Exposition 3",
+    url: withBasePath("/images/ReunionGS6.jpg"),
+    alt: "Grande Salle - Configuration réunion",
   },
   {
-    url: withBasePath("/images/tournage1.jpg"),
-    alt: "Galerie des Trois Bornes - Tournage professionnel",
+    url: withBasePath("/images/VidePS1.jpg"),
+    alt: "Petite Salle - Espace vide",
+  },
+  {
+    url: withBasePath("/images/ReunionPS3.jpg"),
+    alt: "Petite Salle - Configuration réunion",
   },
   {
     url: withBasePath("/images/Scene.png"),
-    alt: "Galerie des Trois Bornes - Scène événementielle",
+    alt: "Galerie des 3 Bornes - Scène événementielle",
   },
   {
-    url: withBasePath("/images/Meeting2.png"),
-    alt: "Galerie des Trois Bornes - Espace meeting",
+    url: withBasePath("/images/PlanGalerie3Bornes.jpg"),
+    alt: "Plan de la Galerie des 3 Bornes",
   },
 ];
 
@@ -46,9 +50,7 @@ export default function Gallery() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('${withBasePath(
-              "/images/ScenePainting.png"
-            )}')`,
+            backgroundImage: `url('${withBasePath("/images/Scene.png")}')`,
           }}
         />
       </div>
