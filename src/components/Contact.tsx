@@ -217,10 +217,10 @@ export default function Contact() {
                         01 56 98 05 31
                       </a>
                       <a
-                        href="tel:+33635532831"
+                        href="tel:+33612778777"
                         className="text-white/70 hover:text-white transition-colors"
                       >
-                        06 35 53 28 31
+                        06 12 77 87 77
                       </a>
                     </div>
                   </div>
