@@ -2,58 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://galeriedes3bornes.com</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://galeriedes3bornes.com/</loc>
+    <lastmod>2026-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://galeriedes3bornes.com/images/VideGS1.jpg</image:loc>
-      <image:title>Galerie des 3 Bornes - Grande Salle Vide</image:title>
-      <image:caption>Loft industriel de 85m² pour événements à Paris 11</image:caption>
+      <image:title>Galerie des 3 Bornes - Grande Salle Location Paris 11</image:title>
+      <image:caption>Loft industriel de 85m2 pour evenements a Paris 11</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://galeriedes3bornes.com/images/VideGS2.jpg</image:loc>
-      <image:title>Galerie des 3 Bornes - Espace Principal</image:title>
-      <image:caption>Salle événementielle avec bar américain Paris</image:caption>
+      <image:title>Galerie des 3 Bornes - Espace Evenementiel Paris</image:title>
+      <image:caption>Salle evenementielle avec bar americain Paris</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://galeriedes3bornes.com/images/ReunionGS6.jpg</image:loc>
-      <image:title>Galerie des 3 Bornes - Configuration Réunion</image:title>
-      <image:caption>Espace coworking et séminaire Paris 11</image:caption>
+      <image:title>Galerie des 3 Bornes - Salle Reunion Seminaire</image:title>
+      <image:caption>Espace coworking et seminaire Paris 11</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://galeriedes3bornes.com/images/VidePS1.jpg</image:loc>
-      <image:title>Galerie des 3 Bornes - Petite Salle</image:title>
-      <image:caption>Salle privée de 25m² pour réunions Paris</image:caption>
+      <image:title>Galerie des 3 Bornes - Petite Salle Privee</image:title>
+      <image:caption>Salle privee de 25m2 pour reunions Paris</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://galeriedes3bornes.com/images/Scene.png</image:loc>
-      <image:title>Galerie des 3 Bornes - Scène</image:title>
-      <image:caption>Espace scénique pour concerts et spectacles Paris</image:caption>
+      <image:title>Galerie des 3 Bornes - Scene Evenements</image:title>
+      <image:caption>Espace scenique pour concerts et spectacles Paris</image:caption>
     </image:image>
-  </url>
-  <url>
-    <loc>https://galeriedes3bornes.com/#about</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://galeriedes3bornes.com/#gallery</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://galeriedes3bornes.com/#services</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://galeriedes3bornes.com/#contact</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>
