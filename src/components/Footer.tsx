@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollReveal } from "./ScrollReveal";
+import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,22 +9,44 @@ export default function Footer() {
     <footer className="bg-gradient-to-b from-black to-black border-t border-white/10 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal delay="0.1s">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 stagger-children animate-fade-in-up">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 stagger-children animate-fade-in-up">
             {/* Brand */}
             <div>
               <h3 className="text-white text-xl font-bold mb-4">
                 Galerie des 3 Bornes
               </h3>
-              <p className="text-white/60 text-sm">
-                Un lieu unique au cœur de Paris pour vos événements, expositions
-                et projets créatifs.
+              <p className="text-white/60 text-sm mb-4">
+                Location de salle événementielle à Paris 11. Loft industriel de
+                120m² pour coworking, séminaires, shootings, tournages,
+                expositions et réceptions.
               </p>
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.facebook.com/ChristoBali96/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook Galerie des 3 Bornes"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  <Facebook size={20} />
+                </a>
+                <a
+                  href="https://www.instagram.com/galeriedestbparis11/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram Galerie des 3 Bornes"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  <Instagram size={20} />
+                </a>
+              </div>
             </div>
 
             {/* Quick Links */}
             <div>
               <h4 className="text-white text-lg font-semibold mb-4">
-                Liens Rapides
+                Navigation
               </h4>
               <ul className="space-y-2">
                 <li>
@@ -39,7 +62,7 @@ export default function Footer() {
                     href="#about"
                     className="text-white/60 hover:text-white transition-colors text-sm"
                   >
-                    A Propos
+                    À Propos
                   </a>
                 </li>
                 <li>
@@ -47,7 +70,7 @@ export default function Footer() {
                     href="#gallery"
                     className="text-white/60 hover:text-white transition-colors text-sm"
                   >
-                    Galerie
+                    Galerie Photos
                   </a>
                 </li>
                 <li>
@@ -55,7 +78,7 @@ export default function Footer() {
                     href="#services"
                     className="text-white/60 hover:text-white transition-colors text-sm"
                   >
-                    Services
+                    Nos Services
                   </a>
                 </li>
                 <li>
@@ -63,37 +86,59 @@ export default function Footer() {
                     href="#contact"
                     className="text-white/60 hover:text-white transition-colors text-sm"
                   >
-                    Contact
+                    Contact & Réservation
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Info */}
+            {/* Services Keywords */}
             <div>
               <h4 className="text-white text-lg font-semibold mb-4">
-                Informations
+                Services
               </h4>
               <ul className="space-y-2 text-sm text-white/60">
-                <li>9 Cité des Trois Bornes</li>
-                <li>75011 Paris, France</li>
-                <li>
-                  <a
-                    href="tel:+33156980531"
-                    className="hover:text-white transition-colors"
-                  >
-                    01 56 98 05 31
-                  </a>
+                <li>Location salle événementielle</li>
+                <li>Espace coworking Paris</li>
+                <li>Salle de séminaire</li>
+                <li>Studio shooting photo</li>
+                <li>Location tournage Paris</li>
+                <li>Salle d&apos;exposition</li>
+                <li>Réception & cocktail</li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-white text-lg font-semibold mb-4">Contact</h4>
+              <ul className="space-y-3 text-sm text-white/60">
+                <li className="flex items-start gap-2">
+                  <MapPin size={16} className="mt-0.5 flex-shrink-0" />
+                  <address className="not-italic">
+                    9 Cité des Trois Bornes
+                    <br />
+                    75011 Paris, France
+                  </address>
                 </li>
-                <li>
-                  <a
-                    href="tel:+33635532831"
-                    className="hover:text-white transition-colors"
-                  >
-                    06 35 53 28 31
-                  </a>
+                <li className="flex items-center gap-2">
+                  <Phone size={16} className="flex-shrink-0" />
+                  <div>
+                    <a
+                      href="tel:+33156980531"
+                      className="hover:text-white transition-colors block"
+                    >
+                      01 56 98 05 31
+                    </a>
+                    <a
+                      href="tel:+33635532831"
+                      className="hover:text-white transition-colors block"
+                    >
+                      06 35 53 28 31
+                    </a>
+                  </div>
                 </li>
-                <li>
+                <li className="flex items-center gap-2">
+                  <Mail size={16} className="flex-shrink-0" />
                   <a
                     href="mailto:galeriedes3bornes@gmail.com"
                     className="hover:text-white transition-colors"

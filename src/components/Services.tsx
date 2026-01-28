@@ -43,7 +43,7 @@ const services = [
 ];
 
 const features = [
-  { label: "Surface Totale", value: "110 M²" },
+  { label: "Surface Totale", value: "120 M²" },
   { label: "Salle Principale", value: "85 M²" },
   { label: "Seconde Salle", value: "25 M²" },
   { label: "Type", value: "LOFT INDUSTRIEL" },

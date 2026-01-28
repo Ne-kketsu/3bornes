@@ -1,0 +1,13 @@
+# Robots.txt for galeriedes3bornes.com
+
+# Allow all robots
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://galeriedes3bornes.com/sitemap.xml
+
+# Block sensitive paths (if any)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404
