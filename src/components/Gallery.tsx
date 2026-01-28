@@ -8,6 +8,14 @@ import { ScrollReveal } from "./ScrollReveal";
 
 const images = [
   {
+    url: withBasePath("/images/OberkPhoto.png"),
+    alt: "Grande Salle - Shooting Photo",
+  },
+  {
+    url: withBasePath("/images/VideGS1.jpg"),
+    alt: "Grande Salle - Espace vide",
+  },
+  {
     url: withBasePath("/images/VideGS1.jpg"),
     alt: "Grande Salle - Espace vide",
   },
