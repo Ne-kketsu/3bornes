@@ -16,10 +16,6 @@ const images = [
     alt: "Grande Salle - Espace vide",
   },
   {
-    url: withBasePath("/images/VideGS1.jpg"),
-    alt: "Grande Salle - Espace vide",
-  },
-  {
     url: withBasePath("/images/VideGS3.jpg"),
     alt: "Grande Salle - Vue d'ensemble",
   },
